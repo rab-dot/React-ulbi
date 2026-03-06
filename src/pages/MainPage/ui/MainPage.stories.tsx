@@ -4,8 +4,6 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import MainPage from './MainPage';
 
-interface MainPageProps {}
-
 export default {
     title: 'pages/MainPage',
     component: MainPage,
@@ -14,7 +12,7 @@ export default {
     },
 } as ComponentMeta<typeof MainPage>;
 
-const Template: ComponentStory<typeof MainPage> = (args: MainPageProps) => <MainPage {...args} />;
+const Template: ComponentStory<typeof MainPage> = (args) => <MainPage {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {};
