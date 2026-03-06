@@ -19,11 +19,11 @@
         "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
         "test:ui:json": "node scripts/generate-visual-json-report.js",
         "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-        "storybook": "start-storybook -p 6006 -c ./config/storybook",
-        "storybook:build": "build-storybook -c ./config/storybook",
         "prepare": "husky install",
         "test": "jest",
-        "unit": "jest --config ./config/jest/jest.config.ts"
+        "unit": "jest --config ./config/jest/jest.config.ts",
+        "storybook": "start-storybook -p 6006 -c ./config/storybook",
+        "storybook:build": "build-storybook -c ./config/storybook"
     },
     "keywords": [],
     "author": "",
@@ -88,7 +88,15 @@
         "webpack-cli": "^4.9.2",
         "webpack-dev-server": "^4.7.4",
         "lint:scss": "npx stylelint \"**/*.scss\"",
-        "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
+        "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
+        "storybook": "^10.2.15",
+        "@storybook/react-webpack5": "^10.2.15",
+        "@storybook/addon-webpack5-compiler-swc": "^4.0.2",
+        "@storybook/addon-a11y": "^10.2.15",
+        "@storybook/addon-docs": "^10.2.15",
+        "@storybook/addon-onboarding": "^10.2.15",
+        "prop-types": "^15.8.1",
+        "eslint-plugin-storybook": "^10.2.15"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.8.0",
