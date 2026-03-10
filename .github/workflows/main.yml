@@ -12,11 +12,11 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - name: Starting Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20
       - name: install modules
         run: npm install
       - name: build production project
@@ -31,6 +31,12 @@ jobs:
         run: npm run storybook:build
       - name: screenshot testing
         run: |
-          python3 -m http.server 6006 --directory storybook-static &
-          sleep 3
-          npx loki --requireReference --reactUri http://localhost:6006 --target chrome.app
+          python3 -m http.server 6006 --directory storybook-static --bind 0.0.0.0 &
+          sleep 5
+          npx loki test --requireReference --reactUri http://host.docker.internal:6006
+      - name: upload loki artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: loki-results
+          path: .loki

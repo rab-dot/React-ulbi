@@ -14,7 +14,8 @@
         "test:unit": "jest --config ./config/jest/jest.config.ts",
         "test:ui": "npx loki test",
         "test:ui:ok": "npx loki approve",
-        "test:ui:ci": "start-server-and-test \"http-server storybook-static --port 6006 -s\" http-get://localhost:6006 \"npx loki --requireReference --reactUri http://host.docker.internal:6006\"",
+        "test:ui:ci": "start-server-and-test \"http-server storybook-static --port 6006 -s\" http-get://localhost:6006 \"npx loki test --requireReference --reactUri http://host.docker.internal:6006\"",
+        "test:ui:ci:ok": "npx loki approve",
         "storybook": "start-storybook -p 6006 -c ./config/storybook",
         "storybook:build": "build-storybook -c ./config/storybook"
     },
@@ -62,7 +63,7 @@
         "http-server": "^14.1.1",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^27.5.1",
-        "loki": "^0.28.1",
+        "loki": "^0.35.1",
         "mini-css-extract-plugin": "^2.5.3",
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.49.9",
@@ -87,24 +88,5 @@
         "react-dom": "^17.0.2",
         "react-i18next": "^11.15.5",
         "react-router-dom": "^6.2.1"
-    },
-    "loki": {
-        "configurations": {
-            "chrome.laptop": {
-                "target": "chrome.docker",
-                "width": 1366,
-                "height": 768,
-                "dockerFlags": [
-                    "--add-host=host.docker.internal:host-gateway"
-                ]
-            },
-            "chrome.iphone7": {
-                "target": "chrome.docker",
-                "preset": "iPhone 7",
-                "dockerFlags": [
-                    "--add-host=host.docker.internal:host-gateway"
-                ]
-            }
-        }
     }
 }
